@@ -207,70 +207,16 @@ const MINTMECoins = [
     logoUrl: "https://dog-swaplatest.vercel.app/images/coins/bounty.png",
   },
   {
-    name: "HealthCred",
-    abbr: "HealthCred",
-    address: "0x4a716D91ce3e1F5DEd10df77b8B21B37c8064b25",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/healthcred.jpeg",
-  },
-  {
-    name: "KRMR",
-    abbr: "KRMR",
-    address: "0xa2d8824Bb755b256FD23DE2C5074C890360A1E5a",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/krmr.jpeg",
-  },
-  {
-    name: "DURP",
-    abbr: "DURP",
-    address: "0x18c21d9c94ABdc7dAF50AeC23F3110B51a5836a7",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/durp.webp",
-  },
-  {
-    name: "NINJA",
-    abbr: "NINJA",
-    address: "0x1675ef80090E4D9cd648E0deBE41a7A8B7ECF4Ef",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/ninja.webp",
-  },
-  {
     name: "MintMoXMR",
     abbr: "MintMoXMR",
     address: "0x3AD09254A2406B6CDf2b184479EaC284E99A72D3",
     logoUrl: "https://dog-swaplatest.vercel.app/images/coins/mintmoxmr.png",
   },
   {
-    name: "SMILE",
-    abbr: "SMILE",
-    address: "0xe5a65FE59B03301C2409c6C5aDe432F44fa1eD0c",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/smile.png",
-  },
-  {
-    name: "Zenny",
-    abbr: "Zenny",
-    address: "0xe7D8B46047d55902982CeD9D37eE85A63B991a1a",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/zenny.jpeg",
-  },
-  {
-    name: "LYME",
-    abbr: "LYME",
-    address: "0xDCC4A184D6598C4eDc01A93C82f2E2cA21366b86",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/lyme.png",
-  },
-  {
-    name: "ToysRus",
-    abbr: "ToysRus",
-    address: "0xECBB9a4be6a7826dc33AC4c3709848937C68B849",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/trus.jpeg",
-  },
-  {
     name: "10K Litoshi",
     abbr: "10K Litoshi",
     address: "0x02d0E745f6A5BCC5216E63E12249e08514CcFfE4",
     logoUrl: "https://dog-swaplatest.vercel.app/images/coins/10klitoshi.png",
-  },
-  {
-    name: "MLM",
-    abbr: "MLM",
-    address: "0xAf0589ce275Bff00a6C71E70Cc4187B7B6894306",
-    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/mlm.jpeg",
   },
 ]
 
