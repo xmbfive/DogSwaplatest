@@ -98,7 +98,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: FaXTwitter, url: 'https://x.com/DogSwapDeFi', label: 'X' },
     { icon: FaDiscord, url: 'https://discord.gg/RSQZDGThfU', label: 'Discord' },
-    { icon: FaTelegram, url: 'https://t.me/DogSwapOfficial', label: 'Telegram' },
+    { icon: FaTelegram, url: 'https://t.me/DogSwapUNOfficial', label: 'Telegram' },
     { icon: FaGithub, url: 'https://github.com/DogToken', label: 'GitHub' },
   ];
 
@@ -113,7 +113,7 @@ const Footer = () => {
         ];
       case 'Resources':
         return [
-          { text: 'Docs', href: 'https://docs.dogswap.xyz/', external: true },
+          { text: 'MRLAG', href: 'https://www.mintme.com/token/LIBERCAT', external: true },
           { text: 'Whitepaper', href: 'https://raw.githubusercontent.com/DogToken/DogSwap-v2/main/Whitepaper.md', external: true },
           { text: 'MintMe', href: 'https://mintme.com/token/DogSwap/', external: true },
           { text: 'FAQs', href: '/faq' },
