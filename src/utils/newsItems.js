@@ -6,8 +6,8 @@ const newsItems = [
     "The stake and pools options are disabled",
     "Spotted an error, spelling mistake or bug? Shoot me a message!",
     "DogSwap is looking for active community members!",
-    "WEIGHT means, the more, the better the rewards."
-    "Dogswap is again revived by libercat"
-  ];
-  
-  export default newsItems;
+    "WEIGHT means, the more, the better the rewards.",  // ✅ Added comma here
+    "Dogswap is again revived by libercat"  // ✅ Last item - no comma needed
+];
+
+export default newsItems;
