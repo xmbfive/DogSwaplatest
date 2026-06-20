@@ -40,16 +40,22 @@ const MINTMECoins = [
     logoUrl: "https://dogswap.xyz/images/coins/peppermint.png",
   },
   {
+    name: "TRADE",
+    abbr: "TRADE",
+    address: "0xbe575e593d845502e1ec7211009a73d06861e324",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/trade.png",
+  },
+    {
     name: "XatteR",
     abbr: "XatteR",
     address: "0xB580f1dbA1c17882Fca8f6DDadA8428c9cB177fC",
-    logoUrl: "https://app.dogswap.xyz/images/coins/xatter.png",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/xatter.png",
   },
   {
     name: "Porncoin",
     abbr: "Porncoin",
     address: "0x488d5DBe9d9a57628428cd98645ED1dFbebF6cD4",
-    logoUrl: "https://app.dogswap.xyz/images/coins/porncoin.png",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/porncoin.png",
   },
   {
     name: "Ranger",
@@ -163,13 +169,13 @@ const MINTMECoins = [
     name: "Toxic Snek",
     abbr: "Toxic Snek",
     address: "0xfe6fbb18a29439f744c8cb554ed9b325d013763d",
-    logoUrl: "https://app.dogswap.xyz/images/coins/tsnek.jpeg",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/tsnek.jpeg",
   },
   {
     name: "Pirate",
     abbr: "Pirate",
     address: "0xf85a07a0a4b94a8896001c165af59b1311af614a",
-    logoUrl: "https://app.dogswap.xyz/images/coins/pirate.jpg",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/pirate.jpg",
   },
   {
     name: "Donatello Club",
@@ -186,7 +192,7 @@ const MINTMECoins = [
     name: "FIXERCOIN",
     abbr: "FIXERCOIN",
     address: "0x091da08c5BF888252ed1ab3E44246cBf72D63307",
-    logoUrl: "https://app.dogswap.xyz/images/coins/fixer.png",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/fixer.png",
   },
   {
     name: "ULTRA-9",
