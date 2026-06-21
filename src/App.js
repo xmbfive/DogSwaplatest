@@ -27,7 +27,6 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 import { Context } from "./Context.js";
 import axios from 'axios';
-import { getBonePriceInUSD, getBonePriceInMintMe } from './utils/priceUtils';
 
 const theme = createTheme({
   palette: {
@@ -45,57 +44,56 @@ const theme = createTheme({
 const App = () => {
   ReactGA.initialize('G-823N1D2MNZ');
 
-  // Using the correct state name for clarity
+  // ONLY MINTME price - nothing else
   const [mintmePriceInUSD, setMintmePriceInUSD] = React.useState(0);
-  const [bonePriceInMintMe, setBonePriceInMintMe] = React.useState("bonePriceInMintMe");
-  const [bonePriceInUSD, setBonePriceInUSD] = React.useState("bonePriceInUSD");
 
   React.useEffect(() => {
-    const getPrices = async function() {
-      // Reset prices
-      setMintmePriceInUSD(0);
-      setBonePriceInUSD(0);
-
+    const getMintMePrice = async function() {
       try {
-        // CORRECT: Using 'webchain' as the ID for MintMe
         const apiKey = 'CG-MDVh7vkyf1ZYzkQTop6oaFqm';
-        // Using proxy to avoid CORS issues
-        const proxyUrl = 'https://corsproxy.io/?';
+        // Try direct API first (may have CORS issues)
         const targetUrl = `https://api.coingecko.com/api/v3/simple/price?ids=webchain&vs_currencies=usd&x_cg_demo_api_key=${apiKey}`;
-        const response = await axios.get(`${proxyUrl}${encodeURIComponent(targetUrl)}`);
+        const response = await axios.get(targetUrl);
         
-        console.log("📡 API Response:", response.data); // Debug log
+        console.log("📡 API Response:", response.data);
         
         if(response.status === 200) {
-          // Set MINTME price using the correct ID 'webchain'
           const price = response.data['webchain']?.usd || 0;
           setMintmePriceInUSD(price);
-          console.log("💰 MINTME Price set to:", price); // Debug log
-          
-          // Keep BONE price logic if you still need it
-          setBonePriceInMintMe(await getBonePriceInMintMe());
-          setBonePriceInUSD(await getBonePriceInUSD(price));
+          console.log("💰 MINTME Price set to:", price);
         }
       } catch (error) {
-        console.error("❌ Can't fetch price:", error);
-        // Optional: Set a fallback price for testing
-        // setMintmePriceInUSD(0.50);
+        console.error("❌ Can't fetch MINTME price:", error);
+        // If CORS fails, try with proxy
+        try {
+          console.log("🔄 Trying with proxy...");
+          const proxyUrl = 'https://corsproxy.io/?';
+          const apiKey = 'CG-MDVh7vkyf1ZYzkQTop6oaFqm';
+          const targetUrl = `https://api.coingecko.com/api/v3/simple/price?ids=webchain&vs_currencies=usd&x_cg_demo_api_key=${apiKey}`;
+          const response = await axios.get(`${proxyUrl}${encodeURIComponent(targetUrl)}`);
+          
+          if(response.status === 200) {
+            const price = response.data['webchain']?.usd || 0;
+            setMintmePriceInUSD(price);
+            console.log("💰 MINTME Price set to (via proxy):", price);
+          }
+        } catch (proxyError) {
+          console.error("❌ Proxy also failed:", proxyError);
+        }
       }
     }
 
-    getPrices();
-    const interval = setInterval(getPrices, 60000);
+    getMintMePrice();
+    // Fetch every 10 minutes
+    const interval = setInterval(getMintMePrice, 600000);
     return () => clearInterval(interval);
   }, []);
   
   return (
     <Context.Provider 
       value={{
-        // Updated to expose MINTME price to navbar
-        mintmePriceInUSDState: [mintmePriceInUSD, setMintmePriceInUSD],
-        // Keep BONE prices if you still need them
-        bonePriceInMintMeState: [bonePriceInMintMe, setBonePriceInMintMe],
-        bonePriceInUSDState: [bonePriceInUSD, setBonePriceInUSD]
+        // ONLY MINTME price - simplified
+        mintmePriceInUSDState: [mintmePriceInUSD, setMintmePriceInUSD]
       }}
     >
       <div className="App">
