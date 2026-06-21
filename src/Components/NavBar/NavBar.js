@@ -14,8 +14,9 @@ const NavBar = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(null);
   
-  // CHANGED: Using mintmePriceInUSDState instead of bonePriceInUSDState
-  const [mintmePriceInUSD] = React.useContext(Context).mintmePriceInUSDState;
+  // Get MINTME price from context with safety check
+  const context = React.useContext(Context);
+  const mintmePriceInUSD = context?.mintmePriceInUSDState?.[0] || 0;
 
   const [userAddress, setUserAddress] = useState('');
   const [activeMenu, setActiveMenu] = useState(null); // Track active menu item for subnav
@@ -74,6 +75,11 @@ const NavBar = () => {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
+  // Format price to show 2 decimal places if needed
+  const formattedPrice = typeof mintmePriceInUSD === 'number' && !isNaN(mintmePriceInUSD) 
+    ? mintmePriceInUSD.toFixed(4) 
+    : '0.0000';
+
   return (
     <>
       <nav className={`navbar ${isOpen ? 'open' : ''}`}>
@@ -113,9 +119,9 @@ const NavBar = () => {
             ))}
             {isConnected && (
               <div className="connected-wallet">
-                {/* CHANGED: Display MINTME instead of BONE */}
+                {/* Display MINTME price with proper formatting */}
                 <Typography variant="body1" sx={{ color: '#4a4a4a', marginRight: '1rem' }}>
-                  1 MINTME = ${mintmePriceInUSD} USD
+                  1 MINTME = ${formattedPrice} USD
                 </Typography>
 
                 <div className="user-menu">
