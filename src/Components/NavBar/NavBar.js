@@ -75,7 +75,7 @@ const NavBar = () => {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
-  // Format price to show 2 decimal places if needed
+  // Format price to show 4 decimal places
   const formattedPrice = typeof mintmePriceInUSD === 'number' && !isNaN(mintmePriceInUSD) 
     ? mintmePriceInUSD.toFixed(4) 
     : '0.0000';
@@ -119,8 +119,23 @@ const NavBar = () => {
             ))}
             {isConnected && (
               <div className="connected-wallet">
-                {/* Display MINTME price with proper formatting */}
-                <Typography variant="body1" sx={{ color: '#4a4a4a', marginRight: '1rem' }}>
+                {/* Display MINTME price with icon */}
+                <Typography variant="body1" sx={{ 
+                  color: '#4a4a4a', 
+                  marginRight: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <img 
+                    src="/images/coins/mintme.png" 
+                    alt="MINTME" 
+                    style={{ 
+                      width: '20px', 
+                      height: '20px',
+                      verticalAlign: 'middle'
+                    }} 
+                  />
                   1 MINTME = ${formattedPrice} USD
                 </Typography>
 
