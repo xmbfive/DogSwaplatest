@@ -14,7 +14,8 @@ const NavBar = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(null);
   
-  const [bonePriceInUSD] = React.useContext(Context).bonePriceInUSDState;
+  // CHANGED: Using mintmePriceInUSDState instead of bonePriceInUSDState
+  const [mintmePriceInUSD] = React.useContext(Context).mintmePriceInUSDState;
 
   const [userAddress, setUserAddress] = useState('');
   const [activeMenu, setActiveMenu] = useState(null); // Track active menu item for subnav
@@ -112,8 +113,9 @@ const NavBar = () => {
             ))}
             {isConnected && (
               <div className="connected-wallet">
+                {/* CHANGED: Display MINTME instead of BONE */}
                 <Typography variant="body1" sx={{ color: '#4a4a4a', marginRight: '1rem' }}>
-                  1 <span role="img" aria-label="bone icon">&#129460;</span> = ${bonePriceInUSD} USD
+                  1 MINTME = ${mintmePriceInUSD} USD
                 </Typography>
 
                 <div className="user-menu">
