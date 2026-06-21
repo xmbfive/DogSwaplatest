@@ -57,18 +57,27 @@ const App = () => {
       setBonePriceInUSD(0);
 
       try {
-        // Fetch MINTME price from CoinGecko (updated ID)
-        let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd`);
+        // FIXED: Using CORS proxy to avoid CORS issues
+        const proxyUrl = 'https://corsproxy.io/?';
+        const targetUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd';
+        const response = await axios.get(`${proxyUrl}${encodeURIComponent(targetUrl)}`);
+        
+        console.log("📡 API Response:", response.data); // Debug log
+        
         if(response.status === 200) {
           // Set MINTME price
-          setMintmePriceInUSD(response.data['mintme-com-coin']?.usd || 0);
+          const price = response.data['mintme-com-coin']?.usd || 0;
+          setMintmePriceInUSD(price);
+          console.log("💰 MINTME Price set to:", price); // Debug log
           
           // Keep BONE price logic if you still need it
           setBonePriceInMintMe(await getBonePriceInMintMe());
-          setBonePriceInUSD(await getBonePriceInUSD(response.data['mintme-com-coin']?.usd || 0));
+          setBonePriceInUSD(await getBonePriceInUSD(price));
         }
       } catch (error) {
-        console.error("Can't fetch price:", error);
+        console.error("❌ Can't fetch price:", error);
+        // Optional: Set a fallback price for testing
+        // setMintmePriceInUSD(0.50);
       }
     }
 
