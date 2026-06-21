@@ -16,8 +16,8 @@ export const poolData = [
         poolId: 10,
         poolType: "Community",
         lpTokenAddress: "0x1d2a64b660E572ce653f35Ce5A9A655D05ae9fd0",
-        imageTokenA: "https://dogswap.xyz/images/coins/mintme.png",
-        imageTokenB: "https://dogswap.xyz/images/coins/xatter.png",
+        imageTokenA: "https://dog-swaplatest.vercel.app/images/coins/mintme.png",
+        imageTokenB: "https://dog-swaplatest.vercel.app/images/coins/xatter.png",
         projectLink: "https://ancientbeast.com"
     },
 ];
