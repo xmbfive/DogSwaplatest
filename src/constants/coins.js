@@ -63,6 +63,12 @@ const MINTMECoins = [
     address: "0x5Fed7eb4B29e9B2E2758AC40C9ec4B4E67098192",
     logoUrl: "https://dog-swaplatest.vercel.app/images/coins/ranger.png",
   },
+    {
+    name: "Pittsburgh digital firm",
+    abbr: "Pittsburgh-digital-firm",
+    address: "0xEEA35140992E644612A495A7aCe7a675c950be71",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/Pittsburgh-digital-firm.png",
+  },
   {
     name: "Dance And Music",
     abbr: "Dance And Music",
