@@ -57,9 +57,11 @@ const App = () => {
       setBonePriceInUSD(0);
 
       try {
-        // FIXED: Using CORS proxy to avoid CORS issues
+        // Using CoinGecko Demo API key
+        const apiKey = 'CG-MDVh7vkyf1ZYzkQTop6oaFqm';
+        // Using proxy to avoid CORS issues
         const proxyUrl = 'https://corsproxy.io/?';
-        const targetUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd';
+        const targetUrl = `https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd&x_cg_demo_api_key=${apiKey}`;
         const response = await axios.get(`${proxyUrl}${encodeURIComponent(targetUrl)}`);
         
         console.log("📡 API Response:", response.data); // Debug log
@@ -133,4 +135,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App; 
