@@ -45,25 +45,30 @@ const theme = createTheme({
 const App = () => {
   ReactGA.initialize('G-823N1D2MNZ');
 
-  const [mintMePriceInUsd, setMintMePriceInUsd] = React.useState("mintMePriceInUsd");
+  // Renamed to mintmePriceInUSD for clarity
+  const [mintmePriceInUSD, setMintmePriceInUSD] = React.useState(0);
   const [bonePriceInMintMe, setBonePriceInMintMe] = React.useState("bonePriceInMintMe");
   const [bonePriceInUSD, setBonePriceInUSD] = React.useState("bonePriceInUSD");
 
   React.useEffect(() => {
     const getPrices = async function() {
-      setMintMePriceInUsd(0);
+      // Reset prices
+      setMintmePriceInUSD(0);
       setBonePriceInUSD(0);
 
       try {
-        // Fetch MintMe price
-        let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=webchain&vs_currencies=usd`);
+        // Fetch MINTME price from CoinGecko (updated ID)
+        let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd`);
         if(response.status === 200) {
-          setMintMePriceInUsd(response.data['webchain']?.usd);
+          // Set MINTME price
+          setMintmePriceInUSD(response.data['mintme-com-coin']?.usd || 0);
+          
+          // Keep BONE price logic if you still need it
           setBonePriceInMintMe(await getBonePriceInMintMe());
-          setBonePriceInUSD(await getBonePriceInUSD(response.data['webchain']?.usd));
+          setBonePriceInUSD(await getBonePriceInUSD(response.data['mintme-com-coin']?.usd || 0));
         }
       } catch (error) {
-        console.error("Can't fetch price");
+        console.error("Can't fetch price:", error);
       }
     }
 
@@ -75,7 +80,9 @@ const App = () => {
   return (
     <Context.Provider 
       value={{
-        mintMePriceInUsdState: [mintMePriceInUsd, setMintMePriceInUsd],
+        // Updated to expose MINTME price to navbar
+        mintmePriceInUSDState: [mintmePriceInUSD, setMintmePriceInUSD],
+        // Keep BONE prices if you still need them
         bonePriceInMintMeState: [bonePriceInMintMe, setBonePriceInMintMe],
         bonePriceInUSDState: [bonePriceInUSD, setBonePriceInUSD]
       }}
