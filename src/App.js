@@ -45,7 +45,7 @@ const theme = createTheme({
 const App = () => {
   ReactGA.initialize('G-823N1D2MNZ');
 
-  // Renamed to mintmePriceInUSD for clarity
+  // Using the correct state name for clarity
   const [mintmePriceInUSD, setMintmePriceInUSD] = React.useState(0);
   const [bonePriceInMintMe, setBonePriceInMintMe] = React.useState("bonePriceInMintMe");
   const [bonePriceInUSD, setBonePriceInUSD] = React.useState("bonePriceInUSD");
@@ -57,18 +57,18 @@ const App = () => {
       setBonePriceInUSD(0);
 
       try {
-        // Using CoinGecko Demo API key
+        // CORRECT: Using 'webchain' as the ID for MintMe
         const apiKey = 'CG-MDVh7vkyf1ZYzkQTop6oaFqm';
         // Using proxy to avoid CORS issues
         const proxyUrl = 'https://corsproxy.io/?';
-        const targetUrl = `https://api.coingecko.com/api/v3/simple/price?ids=mintme-com-coin&vs_currencies=usd&x_cg_demo_api_key=${apiKey}`;
+        const targetUrl = `https://api.coingecko.com/api/v3/simple/price?ids=webchain&vs_currencies=usd&x_cg_demo_api_key=${apiKey}`;
         const response = await axios.get(`${proxyUrl}${encodeURIComponent(targetUrl)}`);
         
         console.log("📡 API Response:", response.data); // Debug log
         
         if(response.status === 200) {
-          // Set MINTME price
-          const price = response.data['mintme-com-coin']?.usd || 0;
+          // Set MINTME price using the correct ID 'webchain'
+          const price = response.data['webchain']?.usd || 0;
           setMintmePriceInUSD(price);
           console.log("💰 MINTME Price set to:", price); // Debug log
           
@@ -135,4 +135,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;
