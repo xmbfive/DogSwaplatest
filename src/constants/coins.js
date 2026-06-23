@@ -16,6 +16,12 @@ const MINTMECoins = [
     logoUrl: "https://dog-swaplatest.vercel.app/images/coins/dogswap.png",
   },
   {
+    name: "MRLAG",
+    abbr: "MRLAG",
+    address: "0xf3fdd20beb696f53bdcd0e8051b00c5f79cd29c0",
+    logoUrl: "https://dog-swaplatest.vercel.app/images/coins/mrlag.png",
+  },
+  {
     name: "Bone",
     abbr: "BONE",
     address: "0x9D8dd79F2d4ba9E1C3820d7659A5F5D2FA1C22eF",
